@@ -1,3 +1,5 @@
+using Game_List_Api.Infrastructure;
+using Game_List_Api.Infrastructure.DatabaseQueries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blazor_Game_List_Api.Controllers
@@ -8,14 +10,16 @@ namespace Blazor_Game_List_Api.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private ILogger<WeatherForecastController> Logger { get; }
+        private IDatabaseConnectionSettings DbSettings { get; }
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IDatabaseConnectionSettings settings)
         {
-            _logger = logger;
+            Logger = logger;
+            DbSettings = settings;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -28,6 +32,13 @@ namespace Blazor_Game_List_Api.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("Test")]
+        public async Task<IReadOnlyList<int>> TestFromDb()
+        {
+            var query = new GetTestInfoDatabaseQuery(DbSettings);
+            return await query.GetTestInfo();
         }
     }
 }

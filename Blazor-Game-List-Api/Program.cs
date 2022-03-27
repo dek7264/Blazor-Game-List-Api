@@ -1,3 +1,5 @@
+using Game_List_Api.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Configuration.AddEnvironmentVariables();
+
+builder.Services.AddSingleton<IDatabaseConnectionSettings, DatabaseConnectionSettings>();
 
 var app = builder.Build();
 
