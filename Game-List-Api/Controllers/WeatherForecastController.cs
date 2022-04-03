@@ -2,7 +2,7 @@ using Game_List_Api.Infrastructure;
 using Game_List_Api.Infrastructure.DatabaseQueries;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Blazor_Game_List_Api.Controllers
+namespace Game_List_Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

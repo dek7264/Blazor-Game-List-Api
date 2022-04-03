@@ -1,4 +1,4 @@
-namespace Blazor_Game_List_Api
+namespace Game_List_Api
 {
     public class WeatherForecast
     {
