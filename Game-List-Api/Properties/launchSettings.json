@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "Blazor_Game_List_Api": {
+    "Game_List_Api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

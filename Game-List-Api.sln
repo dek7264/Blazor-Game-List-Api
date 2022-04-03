@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor-Game-List-Api", "Blazor-Game-List-Api\Blazor-Game-List-Api.csproj", "{42459FE6-0F85-464B-B3EB-EB2EB9554E6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game-List-Api", "Blazor-Game-List-Api\Game-List-Api.csproj", "{42459FE6-0F85-464B-B3EB-EB2EB9554E6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game-List-Api.Infrastructure", "Game-List-Api.Infrastructure\Game-List-Api.Infrastructure.csproj", "{45CE4D0D-85E8-428C-8BB0-12452F656F6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game-List-Api.Infrastructure", "Game-List-Api.Infrastructure\Game-List-Api.Infrastructure.csproj", "{45CE4D0D-85E8-428C-8BB0-12452F656F6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
