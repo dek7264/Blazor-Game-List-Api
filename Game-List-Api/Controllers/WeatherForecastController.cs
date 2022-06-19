@@ -1,5 +1,7 @@
 using Game_List_Api.Infrastructure;
 using Game_List_Api.Infrastructure.DatabaseQueries;
+using GameListApiWorker;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Game_List_Api.Controllers
@@ -15,11 +17,16 @@ namespace Game_List_Api.Controllers
 
         private ILogger<WeatherForecastController> Logger { get; }
         private IDatabaseConnectionSettings DbSettings { get; }
+        public ISendEndpointProvider SendEndpointProvider { get; }
+        public IConfiguration Configuration { get; }
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IDatabaseConnectionSettings settings)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IDatabaseConnectionSettings settings, 
+            ISendEndpointProvider sendEndpointProvider, IConfiguration configuration)
         {
             Logger = logger;
             DbSettings = settings;
+            SendEndpointProvider = sendEndpointProvider;
+            Configuration = configuration;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -40,5 +47,17 @@ namespace Game_List_Api.Controllers
             var query = new GetTestInfoDatabaseQuery(DbSettings);
             return await query.GetTestInfo();
         }
+
+        [HttpPost("PublishRabbitMqMessage")]
+        public async Task PostRabbitMqMessage()
+        {
+            var endpoint = await SendEndpointProvider.GetSendEndpoint(new Uri($"queue:{Configuration["RabbitMqConfiguration:QueueName"]}"));
+            await endpoint.Send(new TestMessage("publish-test", 456));
+        }
     }
+}
+
+namespace GameListApiWorker
+{
+    public record TestMessage(string TestString, int TestInt);
 }
