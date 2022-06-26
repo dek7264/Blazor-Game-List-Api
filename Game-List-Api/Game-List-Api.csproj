@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DatabaseContext.Postgres.Extensions.Microsoft.DependencyInjection\DatabaseContext.Postgres.Extensions.Microsoft.DependencyInjection.csproj" />
     <ProjectReference Include="..\Game-List-Api.Infrastructure\Game-List-Api.Infrastructure.csproj" />
   </ItemGroup>
 

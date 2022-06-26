@@ -1,3 +1,4 @@
+using DatabaseContext.Postgres;
 using Game_List_Api.Infrastructure;
 using MassTransit;
 
@@ -26,7 +27,7 @@ builder.Services.AddMassTransit(x =>
     });
 });
 
-builder.Services.AddSingleton<IDatabaseConnectionSettings, DatabaseConnectionSettings>();
+builder.Services.AddDatabaseContext<IHerokuPostgresDatabaseContext, HerokuPostgresDatabaseContext>(typeof(HerokuPostgresDatabaseContext).Assembly);
 
 var app = builder.Build();
 
