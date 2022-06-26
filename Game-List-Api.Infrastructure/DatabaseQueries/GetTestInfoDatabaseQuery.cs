@@ -1,19 +1,15 @@
 ﻿using Dapper;
-using Npgsql;
+using DatabaseContext;
+using System.Data;
 
 namespace Game_List_Api.Infrastructure.DatabaseQueries
 {
-    public class GetTestInfoDatabaseQuery
-    {
-        private IDatabaseConnectionSettings DbSettings { get; }
-        public GetTestInfoDatabaseQuery(IDatabaseConnectionSettings settings)
-        {
-            DbSettings = settings;
-        }
+    public record GetTestInfoDatabaseQuery : IDatabaseQuery<IReadOnlyList<int>>;
 
-        public async Task<IReadOnlyList<int>> GetTestInfo()
+    public class GetTestInfoDatabaseQueryHandler : IDatabaseQueryHandler<GetTestInfoDatabaseQuery, IReadOnlyList<int>>
+    {
+        public async Task<IReadOnlyList<int>> Execute(IDbConnection connection, IDbTransaction transaction, GetTestInfoDatabaseQuery query, CancellationToken cancellationToken)
         {
-            using var connection = new NpgsqlConnection(DbSettings.ConnectionString);
             return (await connection.QueryAsync<int>("select * from test")).ToList();
         }
     }

@@ -16,17 +16,17 @@ namespace Game_List_Api.Controllers
         };
 
         private ILogger<WeatherForecastController> Logger { get; }
-        private IDatabaseConnectionSettings DbSettings { get; }
-        public ISendEndpointProvider SendEndpointProvider { get; }
-        public IConfiguration Configuration { get; }
+        private ISendEndpointProvider SendEndpointProvider { get; }
+        private IConfiguration Configuration { get; }
+        private IHerokuPostgresDatabaseContext DatabaseContext { get; }
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IDatabaseConnectionSettings settings, 
-            ISendEndpointProvider sendEndpointProvider, IConfiguration configuration)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, 
+            ISendEndpointProvider sendEndpointProvider, IConfiguration configuration, IHerokuPostgresDatabaseContext databaseContext)
         {
             Logger = logger;
-            DbSettings = settings;
             SendEndpointProvider = sendEndpointProvider;
             Configuration = configuration;
+            DatabaseContext = databaseContext;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -44,8 +44,7 @@ namespace Game_List_Api.Controllers
         [HttpGet("Test")]
         public async Task<IReadOnlyList<int>> TestFromDb()
         {
-            var query = new GetTestInfoDatabaseQuery(DbSettings);
-            return await query.GetTestInfo();
+            return await DatabaseContext.ExecuteQuery(new GetTestInfoDatabaseQuery());
         }
 
         [HttpPost("PublishRabbitMqMessage")]
