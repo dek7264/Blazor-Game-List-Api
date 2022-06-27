@@ -9,12 +9,14 @@
 
   <ItemGroup>
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.3" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DatabaseContext.Postgres.Extensions.Microsoft.DependencyInjection\DatabaseContext.Postgres.Extensions.Microsoft.DependencyInjection.csproj" />
     <ProjectReference Include="..\Game-List-Api.Infrastructure\Game-List-Api.Infrastructure.csproj" />
+    <ProjectReference Include="..\GameListApiWorker.Contracts\GameListApiWorker.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

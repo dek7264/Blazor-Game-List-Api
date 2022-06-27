@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseContext.Postgres", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseContext.Postgres.Extensions.Microsoft.DependencyInjection", "DatabaseContext.Postgres.Extensions.Microsoft.DependencyInjection\DatabaseContext.Postgres.Extensions.Microsoft.DependencyInjection.csproj", "{F50973E1-8AED-4FD0-B109-23A49369C00A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameListApiWorker.Contracts", "GameListApiWorker.Contracts\GameListApiWorker.Contracts.csproj", "{6FFDFED6-AE09-454E-858C-986190FF9F05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game-List-Api.Tests.Unit", "Game-List-Api.Tests.Unit\Game-List-Api.Tests.Unit.csproj", "{B422027D-E448-4F02-BD21-6E17849153F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{F50973E1-8AED-4FD0-B109-23A49369C00A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F50973E1-8AED-4FD0-B109-23A49369C00A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F50973E1-8AED-4FD0-B109-23A49369C00A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FFDFED6-AE09-454E-858C-986190FF9F05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FFDFED6-AE09-454E-858C-986190FF9F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FFDFED6-AE09-454E-858C-986190FF9F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FFDFED6-AE09-454E-858C-986190FF9F05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B422027D-E448-4F02-BD21-6E17849153F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B422027D-E448-4F02-BD21-6E17849153F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B422027D-E448-4F02-BD21-6E17849153F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B422027D-E448-4F02-BD21-6E17849153F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

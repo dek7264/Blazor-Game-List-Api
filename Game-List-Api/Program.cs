@@ -1,6 +1,7 @@
-using DatabaseContext.Postgres;
 using Game_List_Api.Infrastructure;
 using MassTransit;
+using MediatR;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,7 @@ builder.Services.AddMassTransit(x =>
     });
 });
 
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddDatabaseContext<IHerokuPostgresDatabaseContext, HerokuPostgresDatabaseContext>(typeof(HerokuPostgresDatabaseContext).Assembly);
 
 var app = builder.Build();
