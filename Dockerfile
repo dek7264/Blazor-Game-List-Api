@@ -12,4 +12,4 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /Game-List-Api
 COPY --from=build-env /Game-List-Api/out .
-ENTRYPOINT ["dotnet", "Game-List-Api/Game-List-Api.dll"]
+ENTRYPOINT ["dotnet", "Game-List-Api.dll"]
